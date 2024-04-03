@@ -3,7 +3,7 @@ from PySimpleGUI import *
 #Configuração da Página Principal
 def main_page():
     layout_left= [
-        [Image(filename='imp.png', subsample=2)]
+        [Image(filename='assets/imp.png', subsample=2)]
     ]
 
     layout_right = [
@@ -12,7 +12,7 @@ def main_page():
         [Input("bm", key=('-LOGIN-'))],
         [Text("SENHA")],
         [Input(key=('-SENHA-'))],
-        [Push(), Button("GERAR", key=('-GERAR-')), Push(), Button("AJUDA", key=('-AJUDA-')),Push(), Button("SAIR"), Push()]
+        [Push(), Button("GERAR", key=('-GERAR-'), button_color=('white', 'blue'), size=(0, 2)), Push(), Button("AJUDA", key=('-AJUDA-'), button_color=('white', 'black')),Push(), Button("SAIR", button_color=('white', 'red')), Push()]
     ]
 
     layout = [
@@ -25,7 +25,7 @@ def main_page():
 #Configuração da Página de Ajuda
 def help_page():
     layout_left= [
-        [Image(filename='exemplo.png')]
+        [Image(filename='assets/exemplo.png')]
     ]
 
     helpText = 'Este programa permite automatizar o processo de inserção de Login e Senha durante a instalação de uma impressora de rede. Após inserir suas credenciais de Administrador de Rede, clique em "GERAR" para que um executável possa ser enviado ao distinatário.'
@@ -41,24 +41,3 @@ def help_page():
     ]
 
     return Window('AutoImp', layout=layout, font=('Arial', 15), size=(930, 300)) 
-
-
-window = main_page()
-
-#events
-while True:
-    event, values = window.read()
-
-    match(event):
-        case '-AJUDA-':
-            window.close()
-            window = help_page()
-        case '-VOLTAR-':
-            window.close()
-            window = main_page()
-
-    if event == WIN_CLOSED or event == 'SAIR':
-        break
-
-       
-window.close()
