@@ -1,5 +1,5 @@
 from interface import *
-
+from py_execute import generate_executable
 
 
 
@@ -26,7 +26,18 @@ def run_app():
                     if popup_yes_no("Senha:", values['-SENHA-']) == 'Yes':
                         login = values['-LOGIN-']
                         password = values['-SENHA-']
+                        popup_ok('Selecione o local para salvar o programa')
+                        save_path = popup_get_folder('Selecione o local para salvar o programa', no_window=True)
+
+                        if save_path:
+                            generate_executable(login, password, save_path)
+                            popup_ok("Programa criado!")
+                            break
                         
+                        else:
+                            popup_ok('Falha na operação')
+                            break
+
         if event == WIN_CLOSED or event == 'SAIR':
             break
 
