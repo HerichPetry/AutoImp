@@ -4,15 +4,37 @@ import time
 
 
 def buscarTela():
+    procurar = "sim"
     print("INICIOU A BUSCA")
-    img = pg.locateCenterOnScreen('teste.png', confidence=0.7)
 
-    if img is not None:
-        pg.click(img.x, img.y)
-        pg.write("teste")
-    else:
-        print("Não encontrou")
-    
+    while procurar == "sim":
+
+        try:
+            img = pg.locateCenterOnScreen('impressora.png', confidence=0.7)
+            #img_login = pg.locateCenterOnScreen('credenciais.png', confidence=0.7)
+
+            pg.click(img.x, img.y)
+            time.sleep(1)
+            pg.click(img.x, img.y)
+            print('encontrou!')
+            procurar = "não"
+
+        except:
+            time.sleep(1)
+            print("Não encontrou ainda")
+
+
+            '''if img is not None:
+                pg.click(img.x, img.y)
+                time.sleep(1)
+                print('encontrou!')
+                break
+            
+            else:
+                print("Não encontrou")
+                time.sleep(1)
+            
+            '''
 
 
 def run_app():  

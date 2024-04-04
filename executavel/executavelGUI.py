@@ -10,7 +10,7 @@ def main_page():
         [Push(), Text('AUTOIMP', font=('Arial', 30), text_color='black'), Push()],
         [Push(), Button("INICIAR", key=('-INICIAR-'), size=(10, 2), button_color=('white', 'blue')), Push()],
         [Text('')],
-        [Push(), Button("AJUDA", key=('-AJUDA-')),Push(), Button("SAIR"), Push()]
+        [Push(), Button("AJUDA", key=('-AJUDA-'), button_color=('white', 'black')),Push(), Button("SAIR", button_color=('white', 'red')), Push()]
     ]
 
     layout = [
